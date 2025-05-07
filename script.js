@@ -57,6 +57,61 @@ async function fetchAllUsers() {
     }
 }
 
+async function fetchProductById(id) {
+    if (!id) {
+        alert('Por favor ingresa un ID de producto');
+        return;
+    }
+    
+    showLoading();
+    try {
+        const response = await fetch(`${API_URL}/products/${id}`);
+        if (!response.ok) throw new Error('Producto no encontrado');
+        
+        const product = await response.json();
+        displayProducts([product]);
+    } catch (error) {
+        handleError(error);
+    } finally {
+        hideLoading();
+    }
+}
+
+async function fetchAllUsers() {
+    showLoading();
+    try {
+        const response = await fetch(`${API_URL}/users`);
+        if (!response.ok) throw new Error('Error al obtener usuarios');
+        
+        const users = await response.json();
+        displayUsers(users);
+    } catch (error) {
+        handleError(error);
+    } finally {
+        hideLoading();
+    }
+}
+
+async function fetchUserById(id) {
+    if (!id) {
+        alert('Por favor ingresa un ID de usuario');
+        return;
+    }
+    
+    showLoading();
+    try {
+        const response = await fetch(`${API_URL}/users/${id}`);
+        if (!response.ok) throw new Error('Usuario no encontrado');
+        
+        const user = await response.json();
+        displayUsers([user]);
+    } catch (error) {
+        handleError(error);
+    } finally {
+        hideLoading();
+    }
+}
+
 function displayProducts(products) {
     if (products.length === 0) {
         resultsContainer.innerHTML = '<p>No se encontraron productos</p>';
