@@ -3,35 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fake Store API</title>
+    <title>Fake Store API Consumer</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Fake Store Products</h1>
+        <h1>Fake Store API Consumer</h1>
     </header>
-
+    
     <main>
         <section class="controls">
-             <button id="getProducts">Obtener todos los productos</button>
-             <button id="getUser">Obtener todos los usuarios</button>
-
+            <button id="getProducts">Obtener todos los productos</button>
+            <button id="getUsers">Obtener todos los usuarios</button>
+            
             <div class="search-container">
                 <input type="number" id="productId" placeholder="ID del producto">
                 <button id="getProduct">Obtener producto</button>
-            
+                
                 <input type="number" id="userId" placeholder="ID del usuario">
                 <button id="getUser">Obtener usuario</button>
             </div>
         </section>
-
+        
         <section class="results">
             <h2>Resultados</h2>
             <div id="loading" class="hidden">Cargando...</div>
             <div id="results-container"></div>
         </section>
     </main>
-
+    
     <script src="script.js"></script>
 </body>
 </html>

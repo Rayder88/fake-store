@@ -7,24 +7,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const userIdInput = document.getElementById('userId');
     const resultsContainer = document.getElementById('results-container');
     const loadingIndicator = document.getElementById('loading');
-
+    
     const API_URL = 'https://fakestoreapi.com';
 
     function showLoading() {
         loadingIndicator.classList.remove('hidden');
         resultsContainer.innerHTML = '';
     }
+
     function hideLoading() {
         loadingIndicator.classList.add('hidden');
     }
 
     function handleError(error) {
         resultsContainer.innerHTML = `
-             <div class="error">
-              <p>Ocurrió un error: ${error.message}</p>
-             </div>
-    `;
-     hideLoading();
+            <div class="error">
+                <p>Ocurrió un error: ${error.message}</p>
+            </div>
+        `;
+        hideLoading();
     }
 
     async function fetchAllProducts() {
@@ -61,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
             hideLoading();
         }
     }
-    
+
     async function fetchAllUsers() {
         showLoading();
         try {
@@ -76,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
             hideLoading();
         }
     }
-    
+
     async function fetchUserById(id) {
         if (!id) {
             alert('Por favor ingresa un ID de usuario');
@@ -96,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
             hideLoading();
         }
     }
-    
+
     function displayProducts(products) {
         if (products.length === 0) {
             resultsContainer.innerHTML = '<p>No se encontraron productos</p>';
@@ -116,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         resultsContainer.innerHTML = productsHTML;
     }
-    
+ 
     function displayUsers(users) {
         if (users.length === 0) {
             resultsContainer.innerHTML = '<p>No se encontraron usuarios</p>';
@@ -138,11 +139,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         resultsContainer.innerHTML = usersHTML;
     }
-    
+
     getProductsBtn.addEventListener('click', fetchAllProducts);
     getProductBtn.addEventListener('click', () => fetchProductById(productIdInput.value));
     getUsersBtn.addEventListener('click', fetchAllUsers);
     getUserBtn.addEventListener('click', () => fetchUserById(userIdInput.value));
-
 });
-
